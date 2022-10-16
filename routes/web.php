@@ -1,5 +1,6 @@
 <?php
 
+use AshAllenDesign\ShortURL\Models\ShortURL;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $urls = ShortURL::latest()->get();
+    return view('welcome', compact('urls'));
 });
+
+
